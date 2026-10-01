@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>کوروش × آنیی | یک اتفاق قشنگ 💍</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #060607;
+      --bg2: #120a0c;
+      --gold: #e4bc68;
+      --gold2: #ffe8ad;
+      --red: #922b3c;
+      --red2: #dc5a6d;
+      --white: #fffaf4;
+      --muted: #c8beb2;
+      --glass: rgba(255,255,255,.055);
+      --border: rgba(255,220,160,.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: "Vazirmatn", sans-serif;
+      color: var(--white);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(228,188,104,.11), transparent 25%),
+        radial-gradient(circle at 85% 85%, rgba(146,43,60,.15), transparent 30%),
+        linear-gradient(135deg, #040404, #10080a 50%, #080506);
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size: 36px 36px;
+      opacity: .35;
+      pointer-events: none;
+    }
+
+    /* =========================
+       Ambient Background
+    ========================== */
+
+    .ambient {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(75px);
+      pointer-events: none;
+      opacity: .16;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+
+    .ambient.one {
+      width: 270px;
+      height: 270px;
+      right: -80px;
+      top: -90px;
+      background: var(--gold);
+    }
+
+    .ambient.two {
+      width: 250px;
+      height: 250px;
+      left: -90px;
+      bottom: -80px;
+      background: var(--red);
+      animation-delay: -5s;
+    }
+
+    @keyframes drift {
+      from {
+        transform: translate(0,0) scale(1);
+      }
+
+      to {
+        transform: translate(30px,25px) scale(1.13);
+      }
+    }
+
+    /* =========================
+       Floating Stars
+    ========================== */
+
+    .sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .spark {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255,231,170,.85);
+      box-shadow: 0 0 10px rgba(255,231,170,.75);
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: .9;
+      }
+
+      85% {
+        opacity: .45;
+      }
+
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+
+    /* =========================
+       Main Layout
+    ========================== */
+
+    .app {
+      width: min(930px, 94vw);
+      height: 100vh;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      width: 100%;
+      max-height: 92vh;
+      overflow: auto;
+      padding: 35px;
+      border-radius: 32px;
+      background: rgba(16, 12, 13, .82);
+      border: 1px solid var(--border);
+      box-shadow:
+        0 30px 100px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: relative;
+    }
+
+    .card::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .card::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,.14);
+      border-radius: 20px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 38px;
+    }
+
+    .brand {
+      color: var(--gold2);
+      font-weight: 800;
+      font-size: .82rem;
+      letter-spacing: .5px;
+    }
+
+    .status {
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(228,188,104,.055);
+      border: 1px solid rgba(228,188,104,.14);
+      color: #d9d0c3;
+      font-size: .78rem;
+    }
+
+    /* =========================
+       Stages
+    ========================== */
+
+    .stage {
+      display: none;
+      animation: enter .65s ease;
+    }
+
+    .stage.active {
+      display: block;
+    }
+
+    @keyframes enter {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(.985);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .mini-label {
+      color: var(--gold);
+      font-size: .92rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    /* =========================
+       Page 1
+    ========================== */
+
+    .hero-title {
+      font-size: clamp(2.25rem, 7vw, 5rem);
+      line-height: 1.1;
+      font-weight: 900;
+      margin-bottom: 25px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(
+        90deg,
+        #ffffff,
+        var(--gold2),
+        #ffffff,
+        var(--gold)
+      );
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shine 5s linear infinite;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 250% center;
+      }
+    }
+
+    .romantic-poem {
+      max-width: 720px;
+      color: #eee5da;
+      font-size: clamp(1rem, 2.5vw, 1.22rem);
+      line-height: 2.35;
+      padding: 5px 0;
+      margin-bottom: 30px;
+    }
+
+    .poem-highlight {
+      color: var(--gold2);
+      font-weight: 800;
+    }
+
+    .names {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .name-box {
+      flex: 1;
+      min-width: 180px;
+      padding: 19px 22px;
+      border-radius: 21px;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.055),
+        rgba(255,255,255,.018)
+      );
+      border: 1px solid rgba(255,255,255,.07);
+      text-align: center;
+    }
+
+    .name-box small {
+      display: block;
+      color: var(--muted);
+      font-size: .77rem;
+      margin-bottom: 6px;
+    }
+
+    .name-box strong {
+      font-size: 1.4rem;
+    }
+
+    .times {
+      color: var(--gold);
+      font-size: 1.7rem;
+      font-weight: 900;
+    }
+
+    /* =========================
+       Buttons
+    ========================== */
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .main-btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 16px;
+      padding: 14px 24px;
+      font-family: inherit;
+      font-size: .98rem;
+      font-weight: 900;
+      color: #1a130a;
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      box-shadow: 0 16px 35px rgba(228,188,104,.16);
+      transition: .22s ease;
+    }
+
+    .main-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 45px rgba(228,188,104,.25);
+    }
+
+    .main-btn:active {
+      transform: scale(.98);
+    }
+
+    .ghost-btn {
+      border: 1px solid rgba(255,255,255,.12);
+      cursor: pointer;
+      border-radius: 15px;
+      padding: 13px 19px;
+      font-family: inherit;
+      font-size: .9rem;
+      font-weight: 700;
+      color: #eee7dc;
+      background: rgba(255,255,255,.03);
+      transition: .22s ease;
+    }
+
+    .ghost-btn:hover {
+      background: rgba(255,255,255,.07);
+      transform: translateY(-2px);
+    }
+
+    /* =========================
+       Page 2
+    ========================== */
+
+    .secret-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.25;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .secret-title span {
+      color: var(--gold2);
+    }
+
+    .subtext {
+      color: var(--muted);
+      line-height: 2;
+      font-size: .98rem;
+      max-width: 720px;
+    }
+
+    .letter {
+      margin-top: 28px;
+      border-radius: 25px;
+      padding: 24px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(228,188,104,.075),
+          rgba(255,255,255,.025)
+        );
+      border: 1px solid rgba(228,188,104,.13);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .letter::before {
+      content: "✦";
+      position: absolute;
+      left: 25px;
+      top: 18px;
+      font-size: 4rem;
+      color: rgba(228,188,104,.06);
+    }
+
+    .letter-label {
+      color: var(--gold);
+      font-size: .8rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .letter-text {
+      color: #eee5da;
+      line-height: 2.35;
+      font-size: 1.02rem;
+    }
+
+    .reveals {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .reveal-card {
+      min-height: 145px;
+      padding: 18px;
+      border-radius: 19px;
+      background: rgba(255,255,255,.033);
+      border: 1px solid rgba(255,255,255,.07);
+      cursor: pointer;
+      transition: .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reveal-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(228,188,104,.18);
+      background: rgba(255,255,255,.05);
+    }
+
+    .reveal-card .icon {
+      font-size: 1.7rem;
+      margin-bottom: 9px;
+      display: block;
+    }
+
+    .reveal-card h3 {
+      font-size: .98rem;
+      color: var(--gold2);
+      margin-bottom: 7px;
+    }
+
+    .reveal-card p {
+      font-size: .87rem;
+      line-height: 1.9;
+      color: #cfc6ba;
+    }
+
+    .little-roast {
+      margin-top: 20px;
+      text-align: center;
+      padding: 15px;
+      border-radius: 16px;
+      background: rgba(146,43,60,.075);
+      border: 1px solid rgba(220,90,109,.12);
+      color: #e7cbd0;
+      line-height: 2;
+      font-size: .9rem;
+    }
+
+    .hidden-letter {
+      display: none;
+      margin-top: 18px;
+      padding: 19px;
+      border-radius: 17px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.07);
+      color: #f1e5d6;
+      line-height: 2.1;
+      animation: enter .5s ease;
+    }
+
+    .hidden-letter.show {
+      display: block;
+    }
+
+    /* =========================
+       Page 3
+    ========================== */
+
+    .final {
+      text-align: center;
+      padding: 12px 2px;
+    }
+
+    .heart {
+      display: inline-block;
+      font-size: 4.7rem;
+      margin-bottom: 15px;
+      animation: heartbeat 1.4s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.12);
+      }
+    }
+
+    .final h2 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.3;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .final h2 span {
+      color: var(--gold2);
+    }
+
+    .final-text {
+      max-width: 760px;
+      margin: auto;
+      color: #ddd4ca;
+      line-height: 2.35;
+      font-size: 1.05rem;
+    }
+
+    .quote {
+      max-width: 690px;
+      margin: 28px auto;
+      padding: 23px;
+      border-radius: 23px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(228,188,104,.07),
+          rgba(255,255,255,.023)
+        );
+      border: 1px solid rgba(228,188,104,.13);
+      color: #ffedca;
+      line-height: 2.2;
+      font-size: 1.04rem;
+    }
+
+    .signature {
+      color: var(--gold2);
+      font-size: 1.03rem;
+      font-weight: 900;
+      margin-top: 28px;
+    }
+
+    .final-roast {
+      margin: 25px auto 0;
+      max-width: 560px;
+      padding: 17px;
+      border-radius: 17px;
+      background: rgba(146,43,60,.08);
+      border: 1px solid rgba(220,90,109,.12);
+      color: #e9cfd3;
+      line-height: 2;
+      font-size: .92rem;
+    }
+
+    .secret-message {
+      min-height: 40px;
+      margin-top: 20px;
+      color: var(--gold2);
+      font-weight: 800;
+      line-height: 1.9;
+    }
+
+    /* =========================
+       Progress
+    ========================== */
+
+    .progress {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 27px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(255,255,255,.15);
+      border-radius: 50%;
+      transition: .3s ease;
+    }
+
+    .dot.active {
+      width: 25px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 14px rgba(228,188,104,.28);
+    }
+
+    /* =========================
+       Confetti
+    ========================== */
+
+    .confetti {
+      position: fixed;
+      z-index: 20;
+      pointer-events: none;
+      animation: fall 3.5s ease-out forwards;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-40px) rotate(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(105vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* =========================
+       Toast
+    ========================== */
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(18,13,14,.95);
+      border: 1px solid rgba(228,188,104,.17);
+      color: #ffedcf;
+      padding: 13px 17px;
+      border-radius: 14px;
+      font-size: .9rem;
+      opacity: 0;
+      transition: .35s ease;
+      z-index: 30;
+      pointer-events: none;
+      box-shadow: 0 15px 40px rgba(0,0,0,.35);
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* =========================
+       One-Time Page
+    ========================== */
+
+    .already-seen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(228,188,104,.10), transparent 25%),
+        radial-gradient(circle at 85% 85%, rgba(146,43,60,.14), transparent 30%),
+        linear-gradient(135deg,#040404,#10080a 50%,#080506);
+      direction: rtl;
+      text-align: center;
+    }
+
+    .already-card {
+      width: min(620px, 94vw);
+      padding: 48px 30px;
+      border-radius: 30px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,220,160,.13);
+      box-shadow: 0 25px 80px rgba(0,0,0,.5);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      animation: enter .65s ease;
+    }
+
+    .already-icon {
+      font-size: 4.6rem;
+      margin-bottom: 20px;
+      animation: heartbeat 1.7s ease-in-out infinite;
+    }
+
+    .already-label {
+      color: var(--gold);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .4px;
+      margin-bottom: 13px;
+    }
+
+    .already-card h1 {
+      font-size: clamp(2rem, 6vw, 3.35rem);
+      margin-bottom: 18px;
+      font-weight: 900;
+      line-height: 1.3;
+      background: linear-gradient(90deg,#fff,#ffe8ad,#fff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .already-card p {
+      color: #d8cec2;
+      line-height: 2.25;
+      font-size: 1rem;
+    }
+
+    .already-meta {
+      margin-top: 25px;
+      padding: 16px;
+      border-radius: 17px;
+      background: rgba(228,188,104,.05);
+      border: 1px solid rgba(228,188,104,.10);
+      color: #ffe8ad;
+      line-height: 2;
+      font-size: .9rem;
+    }
+
+    /* =========================
+       Mobile
+    ========================== */
+
+    @media (max-width: 700px) {
+
+      .app {
+        width: 95vw;
+      }
+
+      .card {
+        padding: 24px 18px;
+        max-height: 94vh;
+        border-radius: 25px;
+      }
+
+      .topbar {
+        margin-bottom: 27px;
+      }
+
+      .reveals {
+        grid-template-columns: 1fr;
+      }
+
+      .names {
+        gap: 10px;
+      }
+
+      .name-box {
+        min-width: 140px;
+      }
+
+      .times {
+        font-size: 1.3rem;
+      }
+
+      .toast {
+        max-width: 90vw;
+        text-align: center;
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="ambient one"></div>
+  <div class="ambient two"></div>
+
+  <div class="sparkles" id="sparkles"></div>
+
+  <main class="app">
+
+    <section class="card">
+
+      <div class="topbar">
+        <div class="brand">A SPECIAL CHAPTER • 2026</div>
+        <div class="status">یک اتفاق قشنگ ثبت شد 💍</div>
+      </div>
+
+
+      <!-- =========================
+           PAGE 1
+      ========================== -->
+
+      <section class="stage active" id="stage1">
+
+        <div class="mini-label">
+          برای دو نفری که یکدیگر را پیدا کردند...
+        </div>
+
+        <h1 class="hero-title">
+          <span>کوروش × آنیی</span>
+          <br>
+          یک شروعِ قشنگ ❤️
+        </h1>
+
+        <div class="romantic-poem">
+
+          تو آمدی و جهان،
+          شبیه رؤیایی شد که سال‌ها
+          در گوشه‌ای از دل، منتظر آمدنت بود...
+
+          <br>
+
+          و حالا دو قلب،
+          در میان تمام شلوغیِ این دنیا،
+          <span class="poem-highlight">
+            راهِ رسیدن به هم را پیدا کرده‌اند.
+          </span>
+
+          <br><br>
+
+          شاید زیباترین اتفاق زندگی،
+          همین باشد؛
+          <span class="poem-highlight">
+            پیدا شدنِ کسی که کنارش،
+            خودِ واقعیِ خودت باشی.
+          </span>
+
+        </div>
+
+        <div class="names">
+
+          <div class="name-box">
+            <small>یک طرفِ این قصه</small>
+            <strong>کوروش</strong>
+          </div>
+
+          <div class="times">×</div>
+
+          <div class="name-box">
+            <small>طرفِ دیگرِ این قصه</small>
+            <strong>آنیی</strong>
+          </div>
+
+        </div>
+
+        <button class="main-btn" onclick="nextStage(2)">
+          یه نامه برای شما دوتا هست... 💌
+        </button>
+
+        <div class="progress">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           PAGE 2
+      ========================== -->
+
+      <section class="stage" id="stage2">
+
+        <div class="mini-label">
+          💌 نامه‌ای که فقط باید با لبخند خوانده شود
+        </div>
+
+        <h2 class="secret-title">
+          برای <span>کوروش و آنیی</span>...
+        </h2>
+
+        <p class="subtext">
+          بعضی خبرها آن‌قدر قشنگ‌اند که نمی‌شود فقط گفت
+          «مبارک باشه».
+          برای همین، این یکی را باید کمی آرام‌تر خواند...
+        </p>
+
+        <div class="letter">
+
+          <div class="letter-label">
+            یک نامه‌ی کوچک از طرف یک رفیق
+          </div>
+
+          <div class="letter-text">
+
+            شاید کسی نداند اولین لبخند،
+            اولین حرف،
+            اولین دل‌گرمی و اولین لحظه‌ای که
+            دو نفر فهمیدند بودنِ همدیگر برایشان فرق دارد،
+            دقیقاً چه زمانی اتفاق افتاد.
+
+            <br><br>
+
+            اما مهم این نیست که قصه از کجا شروع شد؛
+            مهم این است که امروز،
+            دو نفر تصمیم گرفته‌اند
+            بخشی از ادامه‌ی مسیرشان را کنار هم بنویسند.
+
+            <br><br>
+
+            امیدوارم از امروز به بعد،
+            خانه‌تان فقط یک جا برای زندگی نباشد؛
+            جایی باشد برای خنده‌های بی‌دلیل،
+            حرف‌های طولانی،
+            آرامش بعد از روزهای سخت
+            و کلی خاطره‌ای که سال‌ها بعد
+            هنوز ارزش تعریف کردن داشته باشند.
+
+          </div>
+
+        </div>
+
+        <div class="reveals">
+
+          <div class="reveal-card" onclick="reveal(1)">
+            <span class="icon">✨</span>
+            <h3>چیزی که آرزو می‌کنیم</h3>
+            <p>
+              همیشه دلیل لبخند همدیگر باشید،
+              نه فقط دلیل عکس‌های قشنگ.
+            </p>
+          </div>
+
+          <div class="reveal-card" onclick="reveal(2)">
+            <span class="icon">🫶</span>
+            <h3>چیزی که فراموش نشود</h3>
+            <p>
+              وسط شلوغی زندگی،
+              دوباره همدیگر را انتخاب کنید.
+            </p>
+          </div>
+
+          <div class="reveal-card" onclick="reveal(3)">
+            <span class="icon">😂</span>
+            <h3>و یک هشدار کوچک برای کوروش</h3>
+            <p>
+              از این به بعد بعضی تصمیم‌های مهم،
+              نیازمند یک جلسه‌ی فوق‌العاده با آنیی است! 😂
+            </p>
+          </div>
+
+        </div>
+
+        <div id="hiddenLetter" class="hidden-letter"></div>
+
+        <div class="little-roast">
+          البته کوروش جان...
+          ما هنوز هم رفیقتیم؛
+          فقط احتمالاً از این به بعد برای دیدنت
+          باید فرم درخواست ملاقات پر کنیم. 😂❤️
+        </div>
+
+        <div class="actions">
+
+          <button class="main-btn" onclick="nextStage(3)">
+            و حالا حرف آخر... ❤️
+          </button>
+
+          <button
+            class="ghost-btn"
+            onclick="showToast('نامه هنوز چند خط مخفی هم داشت 😏')"
+          >
+            مشکوکم... 👀
+          </button>
+
+        </div>
+
+        <div class="progress">
+          <div class="dot"></div>
+          <div class="dot active"></div>
+          <div class="dot"></div>
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           PAGE 3
+      ========================== -->
+
+      <section class="stage final" id="stage3">
+
+        <div class="heart">❤️</div>
+
+        <div class="mini-label">
+          و حالا بدون شوخی...
+        </div>
+
+        <h2>
+          کوروش و آنیی،
+          <br>
+          <span>از ته دل مبارکتون باشه. 💍</span>
+        </h2>
+
+        <p class="final-text">
+
+          از بین این همه آدم،
+          از بین این همه مسیر،
+          از بین این همه اتفاقی که می‌توانست جور دیگری رقم بخورد،
+          شما به هم رسیدید.
+
+          <br><br>
+
+          و شاید قشنگ‌ترین بخشِ ماجرا همین باشد؛
+          اینکه آدم، یک نفر را پیدا کند
+          که بخواهد فرداهایش را هم با او قسمت کند.
+
+          <br><br>
+
+          آرزو می‌کنم زندگی‌تان پر باشد از
+          آرامش‌های کوچک،
+          خنده‌های بلند،
+          سفرهای ناگهانی،
+          شب‌های طولانیِ حرف زدن
+          و روزهایی که آخرشان
+          باز هم از داشتنِ هم خوشحال باشید.
+
+        </p>
+
+        <div class="quote">
+
+          «خوشبختی شاید همین باشد؛
+          اینکه بعد از گذشت سال‌ها،
+          هنوز وقتی کنار همان آدم می‌نشینی،
+          تهِ دلت بگویی:
+          <strong>خوب شد که تو را پیدا کردم.</strong>»
+
+        </div>
+
+        <p class="final-text">
+
+          کوروش داداش،
+          خوشحالم که وارد فصل جدیدی از زندگیت شدی.
+
+          <br>
+
+          و آنیی،
+          امیدوارم کنار هم
+          زندگی‌ای بسازید که
+          هر سال از سال قبلش
+          قشنگ‌تر باشد. ❤️
+
+        </p>
+
+        <div class="signature">
+          💍 به هر دوتون تبریک می‌گم؛
+          واقعاً و از صمیم قلب.
+        </div>
+
+        <div class="final-roast">
+          و اما کوروش...
+          فقط یک نکته‌ی کاملاً رفاقتی:
+          <br>
+          متأهل شدی،
+          <strong>ولی از رفاقت استعفا ندادی!</strong> 😂
+          <br>
+          پس حواست باشه ما همچنان منتظریم
+          بگی: «بچه‌ها بریم یه دوری بزنیم؟» 😎
+        </div>
+
+        <div class="secret-message" id="secretMessage"></div>
+
+        <div class="actions" style="justify-content:center;">
+
+          <button class="main-btn" onclick="finalSurprise()">
+            آخرین پیام برای کوروش 😈
+          </button>
+
+          <button class="ghost-btn" onclick="location.reload()">
+            دوباره ببینیم 😂
+          </button>
+
+        </div>
+
+        <div class="progress">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot active"></div>
+        </div>
+
+      </section>
+
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+
+  <script>
+
+    /* =========================================================
+       سیستم یک‌بار نمایش
+       فایل محلی = بدون محدودیت
+       سایت اینترنتی = فقط یک بار
+    ========================================================= */
+
+    const ACCESS_KEY = "kouroush_ani_one_time_2026_final_v1";
+
+    /*
+      وقتی فایل مستقیم از لپ‌تاپ باز شود:
+      window.location.protocol === "file:"
+      
+      بنابراین محدودیت فعال نمی‌شود.
+    */
+
+    const isLocalFile = window.location.protocol === "file:";
+
+
+    function showAlreadySeen() {
+
+      document.body.innerHTML = `
+        <div class="already-seen">
+
+          <div class="already-card">
+
+            <div class="already-icon">
+              💍
+            </div>
+
+            <div class="already-label">
+              ONE-TIME SURPRISE
+            </div>
+
+            <h1>
+              این سورپرایز قبلاً دیده شده 😌
+            </h1>
+
+            <p>
+              این پیام فقط برای اولین بازدید ساخته شده بود.
+              <br>
+              پس ظاهراً پرونده‌ی کوروش و آنیی
+              یک بار برای شما باز شده و دیگه تمومه 😂❤️
+            </p>
+
+            <div class="already-meta">
+              <strong>پرونده:</strong> K × A
+              <br>
+              <strong>وضعیت:</strong> مشاهده شد ✅
+              <br>
+              <strong>دسترسی:</strong> پایان یافت 🔒
+            </div>
+
+          </div>
+
+        </div>
+      `;
+    }
+
+
+    /*
+      فقط در نسخه آنلاین محدودیت فعال می‌شود.
+    */
+
+    if (!isLocalFile) {
+
+      try {
+
+        const alreadySeen =
+          localStorage.getItem(ACCESS_KEY);
+
+        if (alreadySeen === "seen") {
+
+          showAlreadySeen();
+
+          throw new Error(
+            "Surprise already viewed."
+          );
+        }
+
+        localStorage.setItem(
+          ACCESS_KEY,
+          "seen"
+        );
+
+      } catch (error) {
+
+        /*
+          اگر localStorage به هر دلیلی در مرورگر
+          قابل استفاده نباشد، صفحه را خراب نمی‌کنیم.
+        */
+
+        if (
+          error.message ===
+          "Surprise already viewed."
+        ) {
+          throw error;
+        }
+      }
+    }
+
+
+    /* =========================================================
+       ستاره‌های متحرک
+    ========================================================= */
+
+    const sparkles =
+      document.getElementById("sparkles");
+
+    for (let i = 0; i < 65; i++) {
+
+      const spark =
+        document.createElement("div");
+
+      spark.className = "spark";
+
+      const size =
+        Math.random() * 4 + 2;
+
+      spark.style.width =
+        size + "px";
+
+      spark.style.height =
+        size + "px";
+
+      spark.style.left =
+        Math.random() * 100 + "vw";
+
+      spark.style.top =
+        (Math.random() * 100 + 10) + "vh";
+
+      spark.style.animationDuration =
+        (7 + Math.random() * 10) + "s";
+
+      spark.style.animationDelay =
+        (-Math.random() * 12) + "s";
+
+      sparkles.appendChild(spark);
+    }
+
+
+    /* =========================================================
+       تغییر صفحات
+    ========================================================= */
+
+    function nextStage(number) {
+
+      document
+        .querySelectorAll(".stage")
+        .forEach(stage => {
+          stage.classList.remove("active");
+        });
+
+      const target =
+        document.getElementById(
+          "stage" + number
+        );
+
+      if (target) {
+        target.classList.add("active");
+      }
+
+      const card =
+        document.querySelector(".card");
+
+      if (card) {
+        card.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+    }
+
+
+    /* =========================================================
+       کارت‌های صفحه دوم
+    ========================================================= */
+
+    function reveal(number) {
+
+      const box =
+        document.getElementById(
+          "hiddenLetter"
+        );
+
+      const messages = {
+
+        1: `
+          شاید زندگی همیشه طبق برنامه پیش نرود،
+          اما آرزو می‌کنم هر اتفاقی که می‌افتد،
+          آخرش شما را بیشتر از قبل به هم نزدیک کند. ✨
+        `,
+
+        2: `
+          سال‌ها بعد،
+          امیدوارم هنوز برای هم وقت بگذارید،
+          هنوز از شنیدن صدای هم خوشحال شوید
+          و هنوز همان دو نفری باشید
+          که بودن کنار هم برایشان کافی است. ❤️
+        `,
+
+        3: `
+          و اما کوروش...
+          یک حقیقت تاریخی را همین‌جا ثبت می‌کنیم:
+          «داداش بریم؟» از این به بعد یک سؤال ساده نیست؛
+          یک فرآیند اداری چندمرحله‌ای است. 😂
+          <br><br>
+          ولی جدی،
+          خیلی خوشحالم برات رفیق. ❤️
+        `
+
+      };
+
+      box.innerHTML =
+        messages[number] || "";
+
+      box.classList.remove("show");
+
+      setTimeout(() => {
+        box.classList.add("show");
+      }, 20);
+    }
+
+
+    /* =========================================================
+       Toast
+    ========================================================= */
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent = message;
+
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2500);
+    }
+
+
+    /* =========================================================
+       پیام نهایی
+    ========================================================= */
+
+    function finalSurprise() {
+
+      const secret =
+        document.getElementById(
+          "secretMessage"
+        );
+
+      secret.innerHTML = `
+        داداش کوروش...
+        <br>
+        این یکی دیگه شوخی نیست:
+        <strong>
+          خیلی خوشحالم برات. ❤️
+        </strong>
+        <br>
+        مراقب این قشنگ‌ترین فصل زندگیت باش.
+      `;
+
+      createConfetti();
+
+      showToast(
+        "پرونده‌ی کوروش × آنیی با موفقیت و با کلی عشق ثبت شد 💍❤️"
+      );
+    }
+
+
+    /* =========================================================
+       کنفتی
+    ========================================================= */
+
+    function createConfetti() {
+
+      const colors = [
+        "#e4bc68",
+        "#ffe8ad",
+        "#922b3c",
+        "#dc5a6d",
+        "#ffffff"
+      ];
+
+      for (let i = 0; i < 90; i++) {
+
+        const piece =
+          document.createElement("div");
+
+        piece.className =
+          "confetti";
+
+        piece.style.left =
+          Math.random() * 100 + "vw";
+
+        piece.style.top =
+          "-30px";
+
+        piece.style.width =
+          (Math.random() * 8 + 5) + "px";
+
+        piece.style.height =
+          (Math.random() * 15 + 8) + "px";
+
+        piece.style.background =
+          colors[
+            Math.floor(
+              Math.random() * colors.length
+            )
+          ];
+
+        piece.style.animationDuration =
+          (2 + Math.random() * 2.2) + "s";
+
+        piece.style.animationDelay =
+          (Math.random() * .7) + "s";
+
+        piece.style.transform =
+          `rotate(${Math.random() * 360}deg)`;
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+          piece.remove();
+        }, 4500);
+      }
+    }
+
+  </script>
+
+</body>
+</html>
